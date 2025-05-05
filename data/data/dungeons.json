@@ -1,0 +1,4 @@
+[
+    {"id": 1, "name": "Cueva Oscura", "powerRequired": 50, "difficulty": "Fácil", "image": "assets/images/dungeons/cave.png"},
+    {"id": 2, "name": "Bosque Maldito", "powerRequired": 200, "difficulty": "Difícil", "image": "assets/images/dungeons/forest.png"}
+  ]

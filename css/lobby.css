@@ -1,0 +1,437 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegurar que el body no tenga scroll y cubra toda la pantalla */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #0a1014; /* Fondo de respaldo */
+  min-height: 100vh; /* Asegura que el body cubra toda la pantalla */
+  font-family: Arial, sans-serif;
+  position: relative; /* Para que los hijos absolutos se posicionen respecto al body */
+}
+
+/* Contenedor principal */
+.lobby-container {
+  min-height: calc(100vh - 60px - 40px); /* Respeta navbar (60px) y footer (40px) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px; /* Espacio para el navbar */
+  padding-bottom: 40px; /* Espacio para el footer */
+  position: relative;
+  z-index: 1; /* Menor que el navbar */
+}
+
+/* Fondo */
+.background-carousel {
+  position: fixed; /* Cubre toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Cubre toda la altura de la pantalla */
+  background-image: url('../Png/Portadas/fondo\ castillo\ en\ ruinas.png'); /* Imagen de fondo única */
+  background-size: cover; /* Cubre ancho y alto sin deformar */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita repetición */
+  opacity: 0.7; /* Ajusta la opacidad para que las tarjetas sean legibles */
+  z-index: 0; /* Asegura que esté detrás del contenido */
+}
+
+/* Estilo para el footer */
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* Altura fija del footer */
+  background: rgba(10, 16, 20, 0.9); /* Fondo semi-transparente */
+  z-index: 3; /* Asegura que esté sobre el fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #d4af37; /* Borde superior para definición */
+}
+
+/* Estilo para los enlaces del footer */
+.footer-links {
+  display: flex;
+  gap: 20px; /* Espacio entre los enlaces */
+}
+
+.footer-link {
+  color: #d4af37;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(10px, 1.5vmin, 12px); /* Tamaño de fuente responsivo */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #e6c84f;
+}
+
+/* Etiqueta de selección */
+.choose-label {
+  display: none;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 3vmin, 20px);
+  color: #d4af37;
+  text-shadow: 1px 1px 2px #000000;
+  margin-bottom: clamp(5px, 1.5vmin, 10px);
+  animation: glow 1s infinite;
+  z-index: 1;
+}
+
+/* Cuadrícula de tarjetas */
+.card-grid {
+  display: grid;
+  grid-template-areas: 
+    "summon dungeon ."
+    "guild shop inventory";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: clamp(10px, 2vmin, 15px);
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1;
+  margin-top: clamp(15px, 2vmin, 20px);
+}
+
+/* Asignación de áreas */
+.summon-card { grid-area: summon; }
+.dungeon-card { grid-area: dungeon; }
+.guild-card { grid-area: guild; }
+.shop-card { grid-area: shop; }
+.inventory-card { grid-area: inventory; }
+
+/* Estilo de las tarjetas */
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 220px;
+  background: rgba(10, 16, 20, 0.8);
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(212, 175, 55, 0.5);
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Hover de tarjetas */
+.card:hover {
+  transform: perspective(1000px) rotateX(3deg) rotateY(3deg) translateY(-10px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(212, 175, 55, 0.7);
+  animation: pulseGlow 1s infinite;
+}
+
+/* Imagen dentro de la tarjeta */
+.card-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-image {
+  opacity: 0.9;
+}
+
+/* Título de la tarjeta */
+.card-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(18px, 3vmin, 24px);
+  color: #d4af37;
+  text-shadow: 1px 1px 2px #000000;
+  background: rgba(10, 16, 20, 0.95);
+  padding: clamp(3px, 1vmin, 5px) clamp(5px, 1.5vmin, 10px);
+  border-radius: 5px;
+  animation: glow 1s infinite;
+}
+
+/* Botón de inicio rápido */
+.quick-start-btn {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: url('../assets/images/pergamino-bg.png') no-repeat center center;
+  background-size: cover;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(14px, 2.5vmin, 18px);
+  padding: clamp(5px, 1.5vmin, 10px) clamp(10px, 2vmin, 20px);
+  border-radius: 5px;
+  cursor: pointer;
+  animation: pulseGlow 1.5s infinite;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.quick-start-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Botón de regreso */
+.back-btn {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  background: url('../assets/images/pergamino-bg.png') no-repeat center center;
+  background-size: cover;
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  padding: clamp(5px, 1.5vmin, 10px);
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 500;
+  animation: glow 2s infinite;
+}
+
+.back-btn:hover {
+  animation: pulseGlow 1s infinite;
+}
+
+/* Animaciones */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px #d4af37; }
+  50% { box-shadow: 0 0 15px #d4af37; }
+  100% { box-shadow: 0 0 5px #d4af37; }
+}
+
+@keyframes glow {
+  0% { text-shadow: 1px 1px 2px #000000, 0 0 5px #d4af37; }
+  50% { text-shadow: 1px 1px 2px #000000, 0 0 15px #d4af37; }
+  100% { text-shadow: 1px 1px 2px #000000, 0 0 5px #d4af37; }
+}
+
+/* Responsividad Avanzada */
+@media (max-width: 1024px) {
+  .lobby-container {
+    padding-top: clamp(70px, 10vmin, 80px);
+    padding-bottom: clamp(30px, 5vmin, 40px);
+  }
+
+  .card-grid {
+    width: 95%;
+    gap: clamp(8px, 1.5vmin, 12px);
+  }
+
+  #footer {
+    height: 40px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+
+  .footer-link {
+    font-size: clamp(9px, 1.2vmin, 11px);
+  }
+}
+
+@media (max-width: 768px) {
+  .lobby-container {
+    padding-top: clamp(70px, 10vmin, 80px);
+    padding-bottom: clamp(30px, 5vmin, 40px);
+  }
+
+  .choose-label {
+    display: block;
+    margin-top: clamp(30px, 5vmin, 40px);
+    color: #e6c84f;
+    animation: none;
+  }
+
+  .card-grid {
+    grid-template-areas: 
+      "summon"
+      "dungeon"
+      "guild"
+      "shop"
+      "inventory";
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+    gap: clamp(5px, 1vmin, 10px);
+    width: clamp(85%, 95vw, 100%);
+    max-height: calc(100vh - 150px - 40px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    margin-top: 0;
+  }
+
+  .card-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    height: clamp(68px, 8.5vh, 85px);
+    aspect-ratio: 16 / 9;
+    transform: perspective(1000px);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+
+  .card:hover {
+    transform: perspective(1000px) translateY(-5px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(212, 175, 55, 0.7);
+  }
+
+  .card-title {
+    font-size: clamp(12px, 2vmin, 14px);
+    padding: clamp(2px, 0.5vmin, 3px) clamp(4px, 1vmin, 6px);
+  }
+
+  .quick-start-btn {
+    position: absolute;
+    top: 80px;
+    right: 15px;
+    margin: 0;
+    display: block;
+    font-size: clamp(12px, 2vmin, 16px);
+    padding: clamp(5px, 1vmin, 8px) clamp(10px, 1.5vmin, 16px);
+    background: linear-gradient(rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.2)), url('../assets/images/pergamino-bg.png') no-repeat center center;
+    background-size: cover;
+    color: #e6c84f;
+    animation: glow 1.5s infinite;
+  }
+
+  .back-btn {
+    top: 80px;
+    left: 15px;
+    padding: clamp(3px, 1vmin, 5px);
+    background: linear-gradient(rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.2)), url('../assets/images/pergamino-bg.png') no-repeat center center;
+    background-size: cover;
+    color: #e6c84f;
+    animation: glow 1.5s infinite;
+  }
+
+  #footer {
+    height: 40px;
+  }
+
+  .footer-links {
+    gap: 10px;
+  }
+
+  .footer-link {
+    font-size: clamp(8px, 1vmin, 10px);
+  }
+}
+
+@media (max-width: 480px) and (orientation: portrait) {
+  .lobby-container {
+    padding-top: clamp(70px, 10vmin, 80px);
+    padding-bottom: clamp(30px, 5vmin, 40px);
+  }
+
+  .choose-label {
+    margin-top: clamp(40px, 6vmin, 50px);
+    font-size: clamp(14px, 3vmin, 18px);
+  }
+
+  .card-grid {
+    gap: clamp(3px, 1vmin, 5px);
+  }
+
+  .card {
+    height: clamp(60px, 7vh, 80px);
+  }
+
+  .quick-start-btn {
+    font-size: clamp(10px, 2vmin, 14px);
+    padding: clamp(4px, 1vmin, 6px) clamp(8px, 1.5vmin, 12px);
+    right: clamp(5px, 1vmin, 10px);
+  }
+
+  .back-btn {
+    left: clamp(5px, 1vmin, 10px);
+    padding: clamp(2px, 0.5vmin, 3px);
+  }
+
+  #footer {
+    height: 35px;
+    padding: 0 8px;
+  }
+
+  .footer-links {
+    gap: 8px;
+    flex-wrap: wrap; /* Permite que los enlaces se ajusten en varias líneas si es necesario */
+    justify-content: center;
+  }
+
+  .footer-link {
+    font-size: clamp(7px, 0.9vmin, 9px);
+  }
+}
+
+@media (max-width: 480px) and (orientation: landscape) {
+  .lobby-container {
+    padding-top: clamp(60px, 8vmin, 70px);
+    padding-bottom: clamp(20px, 3vmin, 30px);
+  }
+
+  .card-grid {
+    max-height: calc(100vh - 120px - 30px);
+  }
+
+  #footer {
+    height: 30px;
+    padding: 0 8px;
+  }
+
+  .footer-links {
+    gap: 8px;
+  }
+
+  .footer-link {
+    font-size: clamp(7px, 0.9vmin, 9px);
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  .background-carousel {
+    background-image: url('../assets/images/Fondos/Fondos-para-emergentes-high-res.png');
+  }
+}
+
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid #fff;
+  }
+
+  .card-title {
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+  }
+
+  #footer {
+    background: rgba(10, 16, 20, 1); /* Más opaco para mejor contraste */
+  }
+
+  .footer-link {
+    color: #fff;
+  }
+}
+
+/* Ajuste para navegadores móviles (viewport dinámico) */
+@supports (height: 100dvh) {
+  .background-carousel {
+    height: 100dvh; /* Usa dvh para incluir barras de navegación en móviles */
+  }
+}

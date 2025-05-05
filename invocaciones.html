@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invocaciones - Exploradores de Valnor</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/invocaciones.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+  <!-- Contenedor de la transición -->
+  <div class="transition-overlay">
+    <div class="transition-image"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="assets/images/logo.png" alt="Logo" class="nav-logo">
+      <span class="nav-username" id="username">Usuario</span>
+    </div>
+    <div class="nav-coins">
+      <span class="coin">Umbra: <span id="umbra-coin">0</span></span>
+      <span class="coin">Mythar: <span id="mythar-coin">500</span></span>
+      <span class="coin">Mining Power: <span id="mining-coin">0</span></span>
+      <span class="coin">Diamonds: <span id="diamonds-coin">0</span></span>
+    </div>
+    <div class="nav-buttons">
+      <button class="nav-btn help-btn" aria-label="Abrir ayuda">?</button>
+      <button class="nav-btn sound-btn" aria-label="Ajustes de sonido">♪</button>
+    </div>
+    <button class="hamburger" aria-label="Menú móvil">☰</button>
+    <div class="mobile-menu">
+      <div class="mobile-menu-content">
+        <div class="mobile-coins">
+          <span class="coin"><img src="assets/images/umbra-icon.png" alt="Umbra"> Umbra: <span id="mobile-umbra-coin">0</span></span>
+          <span class="coin"><img src="assets/images/mythar-icon.png" alt="Mythar"> Mythar: <span id="mobile-mythar-coin">500</span></span>
+          <span class="coin"><img src="assets/images/mining-icon.png" alt="Mining Power"> Mining Power: <span id="mobile-mining-coin">0</span></span>
+          <span class="coin"><img src="assets/images/diamonds-icon.png" alt="Diamonds"> Diamonds: <span id="mobile-diamonds-coin">0</span></span>
+        </div>
+        <div class="mobile-menu-buttons">
+          <button class="nav-btn help-btn">Ayuda</button>
+          <button class="nav-btn sound-btn">Sonido</button>
+        </div>
+      </div>
+    </div>
+    <div id="help-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" aria-label="Cerrar ayuda">×</span>
+        <h3>Ayuda</h3>
+        <p>En Exploradores de Valnor, navega por el lobby para acceder a diferentes secciones como Invocaciones, Mazmorras, Gremios, Mercadillo e Inventario. Usa el botón de Inicio Rápido para comenzar tu aventura.</p>
+      </div>
+    </div>
+    <div id="sound-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" aria-label="Cerrar ajustes de sonido">×</span>
+        <h3>Ajustes de Sonido</h3>
+        <button class="sound-toggle ambient-toggle">Sonido Ambiente del Juego</button>
+        <button class="sound-toggle general-toggle">Sonido General del Juego</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Portada introductoria -->
+  <div class="intro-cover">
+    <div class="intro-content">
+      <h1>Invocaciones</h1>
+      <p>¡Forja tu destino con nuevos aliados!</p>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="invocaciones-container">
+    <!-- Personaje seleccionado -->
+    <div class="selected-character">
+      <div class="character-image" id="selected-character-image">
+        <div class="character-placeholder"></div>
+      </div>
+      <div class="character-info">
+        <h3 id="selected-character-name">Selecciona un personaje</h3>
+        <div id="selected-character-details" class="character-details"></div>
+      </div>
+    </div>
+
+    <!-- Contenido de invocaciones -->
+    <div class="invocaciones-content">
+      <!-- Barra de progreso -->
+      <div class="progress-bar">
+        <div class="progress-step active" data-step="1">1. Selecciona personajes (1-9)</div>
+        <div class="progress-step" data-step="2">2. Elige una piedra</div>
+        <div class="progress-step" data-step="3">3. Añade equipables/consumibles</div>
+        <div class="progress-step" data-step="4">4. Invoca</div>
+      </div>
+
+      <!-- Poder total del equipo -->
+      <div class="team-power">Poder del equipo: <span id="team-power">0</span></div>
+
+      <!-- Sección de personajes -->
+      <h2 class="section-title">Elige tus Personajes <span id="selected-count">Seleccionados: 0/9</span></h2>
+      <button class="deselect-btn" type="button" aria-label="Desmarcar todos los personajes">Desmarcar todos</button>
+      <section class="characters-grid" id="characters-grid">
+        <!-- Los personajes se generarán dinámicamente con JavaScript -->
+      </section>
+
+      <!-- Sección de piedras -->
+      <h2 class="section-title">Piedras de Convocación (Obligatorio)</h2>
+      <section class="stones-list" id="stones-list">
+        <!-- Las piedras se generarán dinámicamente -->
+      </section>
+
+      <!-- Sección de equipables -->
+      <h2 class="section-title">Equipables (Opcional)</h2>
+      <section class="equipables-list" id="equipables-list">
+        <!-- Los equipables se generarán dinámicamente -->
+      </section>
+
+      <!-- Sección de consumibles -->
+      <h2 class="section-title">Consumibles (Opcional)</h2>
+      <section class="consumables-list" id="consumables-list">
+        <!-- Los consumibles se generarán dinámicamente -->
+      </section>
+
+      <!-- Botones de acción -->
+      <div class="action-buttons">
+        <div class="cost">Costo: 100 Mythar</div>
+        <button id="invoke-btn" class="action-btn" type="button" disabled aria-label="Invocar equipo">Invocar</button>
+        <button id="dungeons-btn" class="action-btn" type="button" onclick="goToDungeons()" aria-label="Ir a la sección de Mazmorras">Ir a Mazmorras</button>
+        <button class="action-btn back-btn" type="button" onclick="navigateWithTransition('lobby.html')" aria-label="Volver al lobby">Volver</button>
+      </div>
+
+      <!-- Modal de confirmación -->
+      <div id="invoke-modal" class="modal" role="dialog" aria-labelledby="invoke-modal-title">
+        <div class="modal-content">
+          <h3 id="invoke-modal-title">¿Estás Listo para Invocar?</h3>
+          <div id="invoke-summary"></div>
+          <p>Esto consumirá 100 Mythar y 1 uso de la piedra. ¿Confirmar?</p>
+          <div class="modal-buttons">
+            <button type="button" onclick="confirmInvoke()" aria-label="Confirmar invocación">Confirmar</button>
+            <button type="button" onclick="closeModal('invoke-modal')" aria-label="Cancelar invocación">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de resultado -->
+      <div id="result-modal" class="modal" role="dialog" aria-labelledby="result-modal-title">
+        <div class="modal-content">
+          <h3 id="result-modal-title">¡Invocación Exitosa!</h3>
+          <div id="invoke-result"></div>
+          <button type="button" onclick="closeResultModal()" aria-label="Cerrar resultado de invocación">Cerrar</button>
+          <button type="button" onclick="invokeAgain()" aria-label="Realizar otra invocación">Invocar de nuevo</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-links">
+      <a href="#">Términos y Condiciones</a>
+      <a href="#">Historia</a>
+      <a href="#">Política de Privacidad</a>
+    </div>
+  </footer>
+
+  <div id="particles-container"></div>
+  <script src="js/particles.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/invocaciones.js"></script>
+</body>
+</html>

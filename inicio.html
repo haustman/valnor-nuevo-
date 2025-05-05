@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Exploradores de Valnor</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/inicio.css">
+  <link rel="stylesheet" href="css/particles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="Png/Logos/Exploradores de Valnor.png" alt="Logo" class="nav-logo">
+      <span class="nav-username" id="username">Usuario</span>
+    </div>
+    <div class="nav-coins">
+      <span class="coin">Umbra: <span id="umbra-coin">0</span></span>
+      <span class="coin">Mythar: <span id="mythar-coin">500</span></span>
+      <span class="coin">Mining Power: <span id="mining-coin">0</span></span>
+      <span class="coin">Diamonds: <span id="diamonds-coin">0</span></span>
+    </div>
+    <div class="nav-buttons">
+      <button class="nav-btn help-btn">?</button>
+      <button class="nav-btn sound-btn">♪</button>
+    </div>
+    <button class="hamburger">☰</button>
+    <div class="mobile-menu">
+      <div class="mobile-menu-content">
+        <div class="mobile-coins">
+          <span class="coin"><img src="assets/images/umbra-icon.png" alt="Umbra"> Umbra: <span id="mobile-umbra-coin">0</span></span>
+          <span class="coin"><img src="assets/images/mythar-icon.png" alt="Mythar"> Mythar: <span id="mobile-mythar-coin">500</span></span>
+          <span class="coin"><img src="assets/images/mining-icon.png" alt="Mining Power"> Mining Power: <span id="mobile-mining-coin">0</span></span>
+          <span class="coin"><img src="assets/images/diamonds-icon.png" alt="Diamonds"> Diamonds: <span id="mobile-diamonds-coin">0</span></span>
+        </div>
+        <div class="mobile-menu-buttons">
+          <button class="nav-btn help-btn">Ayuda</button>
+          <button class="nav-btn sound-btn">Sonido</button>
+        </div>
+      </div>
+    </div>
+    <div id="help-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">×</span>
+        <h3>Ayuda</h3>
+        <p>En Exploradores de Valnor, navega por el lobby para acceder a diferentes secciones como Invocaciones, Mazmorras, Gremios, Mercadillo e Inventario. Usa el botón de Inicio Rápido para comenzar tu aventura.</p>
+      </div>
+    </div>
+    <div id="sound-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">×</span>
+        <h3>Ajustes de Sonido</h3>
+        <button class="sound-toggle ambient-toggle">Sonido Ambiente del Juego</button>
+        <button class="sound-toggle general-toggle">Sonido General del Juego</button>
+      </div>
+    </div>
+  </nav>
+  <main class="inicio-container">
+    <div class="background-carousel">
+      <div class="carousel-image bg1"></div>
+      <div class="carousel-image bg2"></div>
+      <div class="carousel-image bg3"></div>
+    </div>
+    <div class="image-space">
+      <picture>
+        <!-- Imagen para móviles (pantallas menores a 768px) -->
+        <source media="(max-width: 768px)" srcset="Png/Portadas/Portada movil.png">
+        <!-- Imagen para escritorio (pantallas mayores a 768px) -->
+        <img src="Png/Portadas/Portada 16.9.webp" alt="Portada de Exploradores de Valnor">
+      </picture>
+    </div>
+    <div class="inicio-content">
+      <h1 class="game-title">Exploradores de Valnor</h1>
+      <p class="subtitle">Únete a la aventura y descubre un mundo lleno de misterios y desafíos.</p>
+      <button class="start-btn" onclick="navigateWithTransition('lobby.html')">Comenzar</button>
+    </div>
+  </main>
+  <div id="footer"></div>
+  <div id="particles-container"></div>
+  <script src="js/particles.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/components.js"></script>
+</body>
+</html>

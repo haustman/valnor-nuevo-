@@ -1,0 +1,24 @@
+{
+    "personajes": [
+      {"id": 1, "nombre": "Guerrero Valiente", "rank": "C", "level": 12, "exp": 240, "ataque": 3, "vida": 18, "defensa": 2, "imagen": "assets/images/characters/guerrero.png", "descripcion": "Personaje de rango C, nivel 12"},
+      {"id": 2, "nombre": "Mago Oscuro", "rank": "B", "level": 18, "exp": 450, "ataque": 4, "vida": 22, "defensa": 3, "imagen": "assets/images/characters/mago.png", "descripcion": "Personaje de rango B, nivel 18"},
+      {"id": 3, "nombre": "Arquera Lunar", "rank": "A", "level": 20, "exp": 600, "ataque": 5, "vida": 32, "defensa": 4, "imagen": "assets/images/characters/arquera.png", "descripcion": "Personaje de rango A, nivel 20"},
+      {"id": 4, "nombre": "Caballero Sombra", "rank": "S", "level": 25, "exp": 875, "ataque": 6, "vida": 55, "defensa": 5, "imagen": "assets/images/characters/caballero.png", "descripcion": "Personaje de rango S, nivel 25"},
+      {"id": 5, "nombre": "Dragón Ancestral", "rank": "SS", "level": 35, "exp": 1400, "ataque": 7, "vida": 110, "defensa": 6, "imagen": "assets/images/characters/dragon.png", "descripcion": "Personaje de rango SS, nivel 35"}
+    ],
+    "piedras": [
+      {"id": 1, "nombre": "Piedra de Fuego", "rank": "C", "ataque": 3, "vida": 18, "defensa": 2, "imagen": "assets/images/stones/piedra_de_fuego.png", "descripcion": "Piedras de rango C"},
+      {"id": 2, "nombre": "Piedra de Hielo", "rank": "B", "ataque": 4, "vida": 22, "defensa": 3, "imagen": "assets/images/stones/piedra_de_hielo.png", "descripcion": "Piedras de rango B"}
+    ],
+    "piedras_invocacion": [
+      {"id": 1, "nombre": "Piedra Lunar", "rank": "A", "ataque": 30, "vida": 32, "defensa": 4, "imagen": "assets/images/invocation-stones/piedra_lunar.png", "descripcion": "Piedras de invocación de rango A"}
+    ],
+    "consumibles": [
+      {"id": 1, "nombre": "Poción de Vida", "rank": "C", "type": "posion", "ataque": 10, "vida": 15, "defensa": 5, "exp": 3, "duracion": "30 min", "habilidades": 2, "imagen": "assets/images/consumables/pocion_de_vida.png", "descripcion": "Consumibles de rango C"},
+      {"id": 2, "nombre": "Fruto Mítico", "rank": "S", "type": "fruto_mitico", "ataque": 40, "vida": 70, "defensa": 0, "exp": 10, "duracion": "48 h", "habilidades": 4, "imagen": "assets/images/consumables/fruto_mitico.png", "descripcion": "Consumibles de rango S"}
+    ],
+    "equipables": [
+      {"id": 1, "nombre": "Espada Épica", "rank": "B", "type": "arma", "ataque": 20, "vida": 15, "defensa": 0, "exp": 5, "habilidad": "poder -1%", "imagen": "assets/images/equipables/espada_epica.png", "descripcion": "Equipables de rango B"},
+      {"id": 2, "nombre": "Amuleto de Poder", "rank": "A", "type": "amuleto", "ataque": 0, "vida": 30, "defensa": 15, "exp": 7, "habilidad": "poder -10%", "imagen": "assets/images/equipables/amuleto_de_poder.png", "descripcion": "Equipables de rango A"}
+    ]
+  }

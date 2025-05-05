@@ -1,0 +1,206 @@
+/* css/inicio.css */
+.inicio-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Mantenemos el centrado vertical */
+  align-items: center;
+  background-color: #0a0a0a;
+  padding-top: 60px;
+  padding-bottom: 80px;
+  box-sizing: border-box;
+}
+
+/* Carrusel de fondo */
+.background-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-image.bg1 {
+  background-image: url('../assets/images/bg1.jpg');
+}
+
+.carousel-image.bg2 {
+  background-image: url('../assets/images/bg2.jpg');
+}
+
+.carousel-image.bg3 {
+  background-image: url('../assets/images/bg3.jpg');
+}
+
+/* Contenedor para la imagen */
+.image-space {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Imagen dentro de .image-space */
+.image-space img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%; /* Ajustado para mostrar más de la parte inferior y priorizar los personajes */
+}
+
+/* Contenido (título, subtítulo, botón) */
+.inicio-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  margin-top: 50px; /* Bajamos el contenido para evitar tapar los personajes */
+}
+
+/* Animación de brillo para el título */
+@keyframes glowEnhanced {
+  0% {
+    text-shadow: 0 0 5px #e8c565, 0 0 10px #e8c565, 0 0 20px #d4af37;
+  }
+  50% {
+    text-shadow: 0 0 10px #e8c565, 0 0 20px #e8c565, 0 0 30px #d4af37;
+  }
+  100% {
+    text-shadow: 0 0 5px #e8c565, 0 0 10px #e8c565, 0 0 20px #d4af37;
+  }
+}
+
+/* Título del juego */
+.game-title {
+  font-family: 'Cinzel', serif;
+  font-size: 48px; /* Reducido un 20% desde 60px */
+  font-weight: bold;
+  color: #e8c565;
+  text-shadow: 2px 2px 4px #000000, 0 0 10px #d4af37;
+  animation: glowEnhanced 2s infinite;
+  margin-bottom: 15px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* Subtítulo */
+.subtitle {
+  font-family: 'Philosopher', sans-serif;
+  font-size: 22px;
+  color: #d4d4d4;
+  text-shadow: 1px 1px 2px #000000;
+  margin-bottom: 25px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+/* Botón de inicio */
+.start-btn {
+  background: url('../assets/images/pergamino-bg.png') no-repeat center center;
+  background-size: cover;
+  border: 2px solid #e8c565;
+  color: #e8c565;
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.start-btn:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 15px #e8c565, 0 0 25px #d4af37;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .inicio-container {
+    padding-top: 90px;
+    padding-bottom: 80px;
+  }
+
+  .image-space img {
+    object-position: center 30%; /* Ajustado para móviles */
+  }
+
+  .inicio-content {
+    margin-top: 40px; /* Bajamos un poco menos en móviles */
+  }
+
+  .game-title {
+    font-size: 32px; /* Reducido un 20% desde 40px */
+    padding: 8px 15px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+  }
+
+  .start-btn {
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 400px) {
+  .inicio-container {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .image-space img {
+    object-position: center 30%;
+  }
+
+  .inicio-content {
+    margin-top: 30px; /* Aún más bajo en pantallas pequeñas */
+  }
+
+  .game-title {
+    font-size: 26px; /* Reducido un 20% desde 32px, redondeado */
+    padding: 6px 12px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    padding: 4px 8px;
+    margin-bottom: 15px;
+  }
+
+  .start-btn {
+    font-size: 16px;
+    padding: 8px 20px;
+    border-radius: 5px;
+  }
+}

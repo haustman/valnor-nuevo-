@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lobby - Exploradores de Valnor</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/lobby.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="Png/Logos/Exploradores de Valnor.png" alt="Logo" class="nav-logo">
+      <span class="nav-username" id="username">Usuario</span>
+    </div>
+    <div class="nav-coins">
+      <span class="coin">Umbra: <span id="umbra-coin">0</span></span>
+      <span class="coin">Mythar: <span id="mythar-coin">500</span></span>
+      <span class="coin">Mining Power: <span id="mining-coin">0</span></span>
+      <span class="coin">Diamonds: <span id="diamonds-coin">0</span></span>
+    </div>
+    <div class="nav-buttons">
+      <button class="nav-btn help-btn">?</button>
+      <button class="nav-btn sound-btn">♪</button>
+    </div>
+    <button class="hamburger">☰</button>
+    <div class="mobile-menu">
+      <div class="mobile-menu-content">
+        <div class="mobile-coins">
+          <span class="coin"><img src="assets/images/umbra-icon.png" alt="Umbra"> Umbra: <span id="mobile-umbra-coin">0</span></span>
+          <span class="coin"><img src="assets/images/mythar-icon.png" alt="Mythar"> Mythar: <span id="mobile-mythar-coin">500</span></span>
+          <span class="coin"><img src="assets/images/mining-icon.png" alt="Mining Power"> Mining Power: <span id="mobile-mining-coin">0</span></span>
+          <span class="coin"><img src="assets/images/diamonds-icon.png" alt="Diamonds"> Diamonds: <span id="mobile-diamonds-coin">0</span></span>
+        </div>
+        <div class="mobile-menu-buttons">
+          <button class="nav-btn help-btn">Ayuda</button>
+          <button class="nav-btn sound-btn">Sonido</button>
+        </div>
+      </div>
+    </div>
+    <div id="help-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">×</span>
+        <h3>Ayuda</h3>
+        <p>En Exploradores de Valnor, navega por el lobby para acceder a diferentes secciones como Invocaciones, Mazmorras, Gremios, Mercadillo e Inventario. Usa el botón de Inicio Rápido para comenzar tu aventura.</p>
+      </div>
+    </div>
+    <div id="sound-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">×</span>
+        <h3>Ajustes de Sonido</h3>
+        <button class="sound-toggle ambient-toggle">Sonido Ambiente del Juego</button>
+        <button class="sound-toggle general-toggle">Sonido General del Juego</button>
+      </div>
+    </div>
+  </nav>
+  <div id="buttons"></div>
+  <main class="lobby-container">
+    <div class="background-carousel"></div>
+    <h2 class="choose-label">Elige</h2>
+    <button class="quick-start-btn" onclick="navigateWithTransition('coming-soon.html')">Inicio Rápido</button>
+    <section class="card-grid">
+      <div class="card summon-card" onclick="navigateWithTransition('invocaciones.html')">
+        <div class="card-image" style="background-image: url('Png/Oscuro/Invocacion.png');"></div>
+        <span class="card-title">Invocaciones</span>
+      </div>
+      <div class="card dungeon-card" onclick="navigateWithTransition('mazmorras.html')">
+        <div class="card-image" style="background-image: url('Png/Fuego/Mazmorra\ 1.png');"></div>
+        <span class="card-title">Mazmorras</span>
+      </div>
+      <div class="card guild-card" onclick="navigateWithTransition('coming-soon.html')">
+        <div class="card-image" style="background-image: url('Png/Gremio.png');"></div>
+        <span class="card-title">Gremios</span>
+      </div>
+      <div class="card shop-card" onclick="window.location.href='https://external-shop.com'">
+        <div class="card-image" style="background-image: url('Png/mercado.png');"></div>
+        <span class="card-title">Mercadillo</span>
+      </div>
+      <div class="card inventory-card" onclick="navigateWithTransition('coming-soon.html')">
+        <div class="card-image" style="background-image: url('Png/inventario.png');"></div>
+        <span class="card-title">Inventario</span>
+      </div>
+    </section>
+  </main>
+  <div id="footer">
+    <div class="footer-links">
+      <a href="#" class="footer-link">Términos y Condiciones</a>
+      <a href="#" class="footer-link">Historia</a>
+      <a href="#" class="footer-link">Política de Privacidad</a>
+    </div>
+  </div>
+  <div id="particles-container"></div>
+  <script src="js/particles.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/components.js"></script>
+</body>
+</html>
